@@ -16,7 +16,7 @@
     "postcss": "^7.0.17",
     "autoprefixer": "^9.6.0"
   },
-  "author": "istanhua",
+  "author": "stanhua-com",
   "license": "MIT",
   "private": false,
   "keywords": [
@@ -26,10 +26,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iStanHua/stanpack.git"
+    "url": "git+https://github.com/stanhua-com/stanpack.git"
   },
   "bugs": {
-    "url": "https://github.com/iStanHua/stanpack/issues"
+    "url": "https://github.com/stanhua-com/stanpack/issues"
   },
-  "homepage": "https://github.com/iStanHua/stanpack#readme"
+  "homepage": "https://github.com/stanhua-com/stanpack#readme"
 }
