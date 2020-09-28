@@ -32,4 +32,10 @@ stanpack -p
 Statistics code line number
 ```
 stanpack -l
+
+```
+
+Delete files
+```
+stanpack -r
 ```

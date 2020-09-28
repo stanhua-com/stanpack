@@ -7,6 +7,7 @@ const wxLib = require('../lib/wx')
 const antLib = require('../lib/ant')
 const pageLib = require('../lib/page')
 const lineLib = require('../lib/line')
+const rimrafLib = require('../lib/rimraf')
 
 program
   .version(pkg.version)
@@ -16,6 +17,7 @@ program
   .option('-a, --ant [mode] [fileDir] [dataFilePath]', 'AntApp project packaging')
   .option('-p, --page', 'Project page list')
   .option('-l, --line [ext]', 'Statistics code line number')
+  .option('-r, --rimraf [fileDir]', 'Delete files')
   .parse(process.argv)
 
 if (program.serve) {
@@ -32,4 +34,7 @@ if (program.page) {
 }
 if (program.line) {
   lineLib(process.argv)
+}
+if (program.rimraf) {
+  rimrafLib(process.argv)
 }
