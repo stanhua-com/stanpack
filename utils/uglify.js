@@ -10,14 +10,14 @@ const fileUtil = require('./file')
 
 /**
  * js和json文件最小化
- * @param {String} fileDir    保存路径名
+ * @param {String} folderNameSuffix    保存文件夹名后缀
  * @param {Boolean} isUglify  是否最小化
  */
-module.exports = (fileDir, isUglify = true) => {
+module.exports = (folderNameSuffix, isUglify = true) => {
   const cwd = process.cwd()
 
   fileUtil.readFile(cwd, (file, extname) => {
-    let fileName = path.join(fileDir, file.replace(cwd, ''))
+    let fileName = path.join(folderNameSuffix, file.replace(cwd, ''))
     if (extname === '.js') {
       if (file.indexOf('.min.js') > -1) isUglify = false
       let code = fs.readFileSync(file, 'utf8')
@@ -64,5 +64,5 @@ module.exports = (fileDir, isUglify = true) => {
 
       code = null
     }
-  }, [fileDir])
+  }, [folderNameSuffix])
 }

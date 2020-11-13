@@ -9,33 +9,39 @@ npm install -g stanpack
 stanpack <command> [options]
 ```
 
-Server project packaging
+### Service package
 ```
 stanpack -s
+stanpack serve
 ```
 
-Weixin project packaging
+### WeChat applet package
 ```
 stanpack -w
+stanpack weapp
 ```
 
-AntApp project packaging
+### Alipay applet package
 ```
 stanpack -a
+stanpack antapp
 ```
 
-Project page list
+### Statistic list of js files in specified folder
 ```
-stanpack -p
+stanpack -j
+stanpack jslist
 ```
 
-Statistics code line number
+### Count the number of code comment lines and blanks
 ```
 stanpack -l
+stanpack line
 
 ```
 
-Delete files
+### Delete files or folders
 ```
 stanpack -r
+stanpack rm
 ```

@@ -12,17 +12,17 @@ const fileUtil = require('./file')
 
 /**
  * sass
- * @param {String} file          文件名
- * @param {String} dataFilePath  sass data文件路径
- * @param {String} outExt        输出格式
- * @param {String} fileDir       保存路径名
+ * @param {String} file              文件名
+ * @param {String} dataPath          sass data文件路径
+ * @param {String} outExt            输出格式
+ * @param {String} folderNameSuffix  保存文件夹名后缀
  */
-module.exports = (file, dataFilePath, fileDir, outExt = 'css') => {
+module.exports = (file, dataPath, folderNameSuffix, outExt = 'css') => {
   const cwd = process.cwd()
   if (file.indexOf('styles') > -1) return
-  if (dataFilePath && file.indexOf(path.basename(dataFilePath)) > -1) return
+  if (dataPath && file.indexOf(path.basename(dataPath)) > -1) return
 
-  const savePathName = path.resolve(cwd, `../${path.basename(cwd)}_${fileDir}`)
+  const savePathName = path.resolve(cwd, `../${path.basename(cwd)}_${folderNameSuffix}`)
 
   let fileName = path.join(savePathName, file.replace(cwd, ''))
   outExt = outExt.indexOf('.') > -1 ? outExt : `.${outExt}`
@@ -30,7 +30,7 @@ module.exports = (file, dataFilePath, fileDir, outExt = 'css') => {
 
   let result = sass.renderSync({
     file: file,
-    // data: dataFilePath ? `@import "${dataFilePath}";` : null,
+    // data: dataPath ? `@import "${dataPath}";` : null,
     // includePaths: includePaths,
     outputStyle: 'compressed',
     outFile: null,

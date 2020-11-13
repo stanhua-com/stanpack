@@ -6,7 +6,6 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = {
-
   /**
    * 递归创建目录
    * @param {String} sourcePath  来源路径
