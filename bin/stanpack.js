@@ -57,11 +57,4 @@ program
   .description('Delete files or folders')
   .action(function () { rmLib(process.argv) })
 
-program
-  .command('help', { isDefault: true })
-  .description('Print this help')
-  .action(function () {
-    program.outputHelp()
-  })
-
 program.parse(process.argv)
