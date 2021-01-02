@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { program } = require('commander')
+const commander = require('commander')
 
 const pkg = require('../package.json')
 const serveLib = require('../lib/serve')
@@ -10,24 +10,11 @@ const jslistLib = require('../lib/jslist')
 const lineLib = require('../lib/line')
 const rmLib = require('../lib/rm')
 
+const program = new commander.Command()
+
 program
   .version(pkg.version)
   .usage('<command> [options]')
-  .option('-s, --serve', 'Service package')
-  .option('-w, --weapp [mode] [folderNameSuffix] [sassDataPath]', 'WeChat applet package')
-  .option('-a, --antapp [mode] [folderNameSuffix] [sassDataPath]', 'Alipay applet package')
-  .option('-j, --jslist [folderName] [isExt]', 'Statistic list of js files in specified folder')
-  .option('-l, --line [exts]', 'Count the number of code comment lines and blanks')
-  .option('-r, --rm [filePath]', 'Delete files or folders')
-
-if (program.serve) serveLib()
-if (program.weapp) wxLib(process.argv)
-if (program.antapp) antLib(process.argv)
-if (program.jslist) jslistLib(process.argv)
-if (program.line) lineLib(process.argv)
-if (program.rm) rmLib(process.argv)
-
-program
   .command('serve')
   .description('Service package')
   .action(function () { serveLib() })
