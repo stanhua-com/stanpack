@@ -9,6 +9,7 @@ const antLib = require('../lib/ant')
 const jslistLib = require('../lib/jslist')
 const lineLib = require('../lib/line')
 const rmLib = require('../lib/rm')
+const defaultBrowserLib = require('../lib/defaultBrowser')
 
 const program = new commander.Command()
 
@@ -43,5 +44,10 @@ program
   .command('rm [filePath]')
   .description('Delete files or folders')
   .action(function () { rmLib(process.argv) })
+
+program
+  .command('set-default-browser <browserName>')
+  .description('Set default browser  Available Browsers: chrome chromeCanary firefox firefoxDE safari edge edgeCanary')
+  .action(function () { defaultBrowserLib(process.argv) })
 
 program.parse(process.argv)
