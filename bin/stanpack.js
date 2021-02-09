@@ -15,7 +15,8 @@ const program = new commander.Command()
 
 program
   .version(pkg.version)
-  .usage('<command> [options]')
+
+program
   .command('serve')
   .description('Service package')
   .action(function () { serveLib() })
@@ -50,4 +51,18 @@ program
   .description('Set default browser  Available Browsers: chrome chromeCanary firefox firefoxDE safari edge edgeCanary')
   .action(function () { defaultBrowserLib(process.argv) })
 
-program.parse(process.argv)
+program
+  .option('-s, --serve', 'Service package')
+  .option('-w, --weapp [mode] [folderNameSuffix] [sassDataPath]', 'WeChat applet package')
+  .option('-a, --antapp [mode] [folderNameSuffix] [sassDataPath]', 'Alipay applet package')
+  .option('-j, --jslist [folderName] [isExt]', 'Statistic list of js files in specified folder')
+  .option('-l, --line [exts]', 'Count the number of code comment lines and blanks')
+  .option('-r, --rm [filePath]', 'Delete files or folders')
+  .parse(process.argv)
+
+if (program.serve) serveLib()
+if (program.weapp) wxLib(process.argv)
+if (program.antapp) antLib(process.argv)
+if (program.jslist) jslistLib(process.argv)
+if (program.line) lineLib(process.argv)
+if (program.rm) rmLib(process.argv)
